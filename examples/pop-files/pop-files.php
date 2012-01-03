@@ -12,7 +12,7 @@ why are you requerying the API for every page request, when the data
 only changes sporadically?
 */
 
-$files = get_script( 
+$files = get_json( 
 	'http://marketplace.envato.com/api/edge/popular:codecanyon.json'
 );
 
