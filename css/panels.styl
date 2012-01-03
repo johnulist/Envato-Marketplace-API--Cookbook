@@ -6,12 +6,11 @@ div[role=main]
 	cursor pointer
 
 h4
-	color chocolate
 	display inline
 
 .active, h4:hover
-	background headings
-	color white
+	background accent
+	color darkBlue
 	border-radius 10px
 	padding 5px 10px
 	margin-right -13px
@@ -24,10 +23,10 @@ h4
 
 
 article
-	padding 40px 60px
+	padding 40px 60px 0
 	margin-bottom 40px	
-	background bg
-	border 3px dashed darken(bg, 40%)
+	background darkBlue
+	border 3px dashed chocolate
 	border-radius 10px
 	cursor pointer
 	
@@ -47,16 +46,18 @@ article header
 		list-style none
 		padding-left 0
 		font-size .8em
-		color chocolate
 
 		li
 			line-height 1.8em
-			color black
+			color white
 			text-shadow 0 1px 0 lighten(bg, 20%)
 
+			strong
+				color accent
+				text-shadow none
+
 	h2
-		color headings
-		margin-bottom 5px
+ 		margin-bottom 5px
 
 	p
 		color darken(bg, 60%)
@@ -65,7 +66,6 @@ article header
 article > ul
 	position relative
 	top -3px
-	background bg
 	margin auto
 	margin-top 2em
 	box-sizing border-box
@@ -86,9 +86,9 @@ article > ul
 		
 
 pre.prettyprint
-	background lighten(bg, 20%)
+	background darken(darkBlue, 10%)
 	cursor pointer
-	border 1px solid darken(bg, 20%)
+	border 1px solid lighten(darkBlue, 20%)
 	margin-top -10px
 	font-size .8em
 
