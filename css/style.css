@@ -442,6 +442,7 @@ body {
   background: -ms-linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
   background: linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
   border-bottom: 1px solid #2d6ba0;
+  border-top: 3px solid #2d6ba0;
   -webkit-box-shadow: 0 1px 0 #c8ddf0;
   -moz-box-shadow: 0 1px 0 #c8ddf0;
   box-shadow: 0 1px 0 #c8ddf0;
