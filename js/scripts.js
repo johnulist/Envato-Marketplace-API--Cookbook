@@ -7,7 +7,9 @@
 
 	dom = {
 		articles: $('article'),
-		languageHeadings: $('h4')
+		languageHeadings: $('ul.nav h4'),
+		snippets: $('ul.snippets li'),
+		nav: $('.nav')
 	};
 
 	engine = {
@@ -18,54 +20,39 @@
 
 		// context = heading
 		accordion: function(context) {
-			dom.articles.children('ul').hide();
+			dom.articles.children('ul').not('.snippets').hide();
+			dom.snippets.hide();
 
 			dom.articles.find('header').click(function() {
 				var heading = $(this);
 				
+				dom.languageHeadings.removeClass('active');
+
+				dom.nav.slideToggle(500);
+				
+				dom.snippets.hide();
 				// hide other panels
+
 				heading
 					.parent('article')
 					.siblings()
-					.find('ul')
-						.slideUp(500);
-
-				// show example unordered list
-				heading
-					.next('ul')
-						.find('li')
-							.children(':not(h4)')
-								.hide()
-							.end()
-						.end()
+					.find('ul.snippets')
 						.slideToggle(500);
-
-				dom.languageHeadings
-					.removeClass('noBorder');
 
 			});
 
 			dom.languageHeadings.click(function() {
-				var heading = $(this);
+				var heading = $(this),
+					rel = heading[0].innerHTML.toLowerCase();
 
-				heading
-					.parent()
-						.siblings()
-							.find('h4')
-								.removeClass('noBorder')
-								.end()
-							.children()
-								.not('h4')
-									.slideUp(400);
-
-
-				heading
-					.siblings()
-						.slideToggle(500)
-						.end()
-					.toggleClass('noBorder');
+				dom.languageHeadings.removeClass('active');
+				heading.addClass('active');
 				
-			}).siblings().hide();
+				dom.snippets
+					.hide()
+					.filter('.' + rel)
+						.show();
+			});
 		},
 
 		clipboard: function() {
