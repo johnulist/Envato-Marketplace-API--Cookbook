@@ -434,7 +434,7 @@ h4:hover {
   border-bottom: none;
 }
 article {
-  padding: 40px 60px;
+  padding: 40px 60px 0;
   margin-bottom: 40px;
   background: #bda890;
   border: 3px dashed #7d664b;
