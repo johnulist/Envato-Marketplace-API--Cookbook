@@ -209,12 +209,22 @@ table {
   border-spacing: 0;
 }
 h1 {
-  font-family: 'Noticia Text';
-  font-size: 1.5em;
+  font-family: 'HominisNormal';
+  font-size: 5em;
   text-align: center;
-  font-style: italic;
   font-weight: normal;
+  color: #bda890;
+  text-shadow: 0 0 10px rgba(0,0,0,0.60);
+  margin-bottom: 0;
+}
+.wrap h2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
   margin-bottom: 1em;
+  color: #ded4c8;
+  text-align: center;
+  font-weight: normal;
 }
 p {
   font-size: 1em;
@@ -325,20 +335,6 @@ li.L9 {
 body {
   background: #bda890;
 }
-.wrap {
-  background: #412812;
-  background: -webkit-linear-gradient(#412812, #523217) no-repeat;
-  background: -moz-linear-gradient(#412812, #523217) no-repeat;
-  background: -o-linear-gradient(#412812, #523217) no-repeat;
-  background: -ms-linear-gradient(#412812, #523217) no-repeat;
-  background: linear-gradient(#412812, #523217) no-repeat;
-  border-bottom: 1px solid #2d1c0d;
-  -webkit-box-shadow: 0 1px 0 #ecd3bc;
-  -moz-box-shadow: 0 1px 0 #ecd3bc;
-  box-shadow: 0 1px 0 #ecd3bc;
-  color: #fff;
-  margin-bottom: 50px;
-}
 .inner {
   width: 80%;
   margin: auto;
@@ -394,14 +390,19 @@ div[class^="grid_"] {
     margin: 0;
   }
 }
-h1 span {
-  display: block;
-  font-size: 3.5em;
-  font-style: normal;
-  font-weight: bold;
-  margin-bottom: -15px;
-  color: #bda890;
-  text-shadow: 0 1px 0 #d7cbbc, 5px 0 0 #27180b;
+.wrap {
+  background: #412812;
+  background: -webkit-linear-gradient(#412812, #523217) no-repeat;
+  background: -moz-linear-gradient(#412812, #523217) no-repeat;
+  background: -o-linear-gradient(#412812, #523217) no-repeat;
+  background: -ms-linear-gradient(#412812, #523217) no-repeat;
+  background: linear-gradient(#412812, #523217) no-repeat;
+  border-bottom: 1px solid #2d1c0d;
+  -webkit-box-shadow: 0 1px 0 #ecd3bc;
+  -moz-box-shadow: 0 1px 0 #ecd3bc;
+  box-shadow: 0 1px 0 #ecd3bc;
+  color: #fff;
+  margin-bottom: 50px;
 }
 div[role=main] {
   margin-top: 2em;
@@ -435,8 +436,9 @@ article h4 {
   cursor: pointer;
 }
 article header {
+  background: #bda890;
   border: 3px dashed #7d664b;
-  padding: 15px 40px;
+  padding: 40px 100px;
   margin-bottom: 0;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
