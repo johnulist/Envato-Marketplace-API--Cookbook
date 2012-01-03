@@ -2,43 +2,64 @@
 (function() {
 	var dom, engine;
 
-	// enable syntax highlighting
-	prettyPrint();
-
 	dom = {
-		languageHeadings: $('ul.nav h4'),
-		snippets: $('ul.snippets li')
+		languageHeadings: $('ul.nav h4 a'),
+		snippets: $('ul.snippets li'),
+		articles: 'article'
 	};
 
 	engine = {
 		init: function() {
-			this.accordion();
+			this.codeView();
 			this.clipboard();
 		},
 
-		// context = heading
-		accordion: function(context) {
+		codeView: function() {
+			var template = $('#template').html(),
+				articles = $(dom.articles);
+				console.log(articles);
 
-			// Hide all content 
-			dom.snippets.hide();
+			articles.on('click', 'h4 a', function(e) {
+				var $this = $(this),
+					href = $this.attr('href'),
+					language = $this.text().toLowerCase(),
+					relatedSnippets = $this.parents('.nav').siblings('.snippets'),
+					target = relatedSnippets.find('.' + language),
+					demoLink = $this.data('demo');
 
-			dom.languageHeadings.click(function() {
-				var heading = $(this),
-					rel = heading[0].innerHTML.toLowerCase(),
-					relatedSnippets = heading.parents('.nav').next('.snippets');
+				e.preventDefault();
 
+				relatedSnippets.find('li').hide();
+
+				articles.find('.nav li').removeClass('active');
+				$this.parents('li').addClass('active');
+
+				// Already available
+				if ( target[0] ) {
+					target.show();
+					return;
+				}
 					
-				dom.languageHeadings.parent('li').removeClass('active');
-				heading.parent('li').addClass('active');
+				// Otherwise, get Gist...
+				$this.addClass('fetching');
+				$.post('functions.php', {href: href}, function(code) {
+					relatedSnippets.append(
+						template
+							.replace(/{{language}}/, language)
+							.replace(/{{code}}/, code)
+							.replace(/{{gistID}}/, /raw\/(\d+)/.exec(href)[1])
+							.replace(/{{demoLink}}/, demoLink)
+					);
 
-				dom.snippets.not(relatedSnippets.find('li')).hide();
+					if ( !demoLink ) {
+						relatedSnippets.find('.demo').remove();
+					}
 
-				relatedSnippets
-					.show()
-					.find('li')
-						.hide()
-						.filter('.'+rel)
-							.fadeToggle(350);
+					// enable syntax highlighting
+					prettyPrint();
+
+					$this.removeClass('fetching');
+				});
 			});
 		},
 
@@ -63,6 +84,7 @@
 
 
 
+	// temporary
 	function generateNoise(opacity, cb) {
 		if ( !!!document.createElement('canvas').getContext ) {
 			return false;
@@ -96,7 +118,4 @@
 			$(document.body).css('backgroundImage', 'url(' + data + ')');
 		});	
 
-
-
 })();
-

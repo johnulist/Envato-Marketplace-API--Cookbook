@@ -5,8 +5,7 @@
 </head>
 <body>
 
-<h1>Popular Files</h1>
-
+<h1>Popular Files From ThemeForest Last Week</h1>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
@@ -15,7 +14,7 @@
 $.getJSON('http://173.255.193.46/api/edge/popular:themeforest.json?callback=?', function(files) {
     var imgs;
 
-    files = files.popular
+    files = files.popular;
     console.log(files); // see what's available to play with
                    
     imgs  = $.map(files.items_last_week, function(file, i) {            

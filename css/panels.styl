@@ -5,15 +5,33 @@ div[role=main]
 	display inline-block
 	cursor pointer
 
-.active h4, li:hover h4
-	background accent
-	color darkBlue
-	border-radius 10px
-	padding 5px 10px
-	margin-right -13px
-	font-size .8em
-	font-weight normal
 
+	
+
+li:hover h4 a, .active h4 a
+	color inherit
+	background accent
+	background: -webkit-linear-gradient(lighten(accent, 80%), accent 40%);
+	color darkBlue
+
+h4 a:active
+	background: -webkit-linear-gradient(accent, lighten(accent, 20%) 40%) !important;
+
+.fetching
+	-webkit-animation pulse 1.5s alternate infinite
+
+@-webkit-keyframes pulse {
+	50% {
+		-webkit-transform scale(1.1)
+	}
+}
+
+h4 a
+	padding 7px 10px
+	display inline-block
+	font-size: .9em
+	border-radius 10px
+	font-weight normal
 
 .noBorder
 	border-bottom none
@@ -29,9 +47,7 @@ article
 
 article h2, article h4, article ul
 	margin-top 0
-
-article h2, article h4
-	cursor pointer
+	
 
 article header
 	margin-bottom 0
@@ -84,19 +100,21 @@ article > ul.nav
 		&:last-child
 			border-right none
 
-		&:nth-child(n+2)
+		&nth-child(n+2)
 			padding-top 0		
-		
-
-pre.prettyprint
-	background darken(darkBlue, 10%)
-	cursor pointer
-	border 1px solid lighten(darkBlue, 20%)
-	margin-top -10px
-	font-size .8em
 
 .selectedCode
 	background white !important
 
 .snippets li
 	margin-bottom 30px
+
+.discuss
+	background white
+	padding 8px 20px
+	font-size .8em
+	margin-bottom 40px
+	text-align right
+
+.demo
+	float left

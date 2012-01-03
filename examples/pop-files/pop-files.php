@@ -1,25 +1,23 @@
+<h1>Popular Files from CodeCanyon Last Week</h1>
 <?php
 
-error_reporting(E_ALL);
+require '../helpers.php';
 
 
-function curl($url) 
-{
-  if ( empty($url) ) return false;
+/* 
+Remember: whenever you're working with an API, you must implement
+some level of caching. Otherwise, the API will be hammered, you'll
+exceed your limit, and your page will take longer to load. Think about it - 
+why are you requerying the API for every page request, when the data 
+only changes sporadically?
+*/
 
-  $ch = curl_init($url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$files = get_script( 
+	'http://marketplace.envato.com/api/edge/popular:codecanyon.json'
+);
 
-  $data = curl_exec($ch);
-  curl_close($ch);
-
-  return json_decode($data);
-}
-
-$files = curl( "http://marketplace.envato.com/api/edge/popular:themeforest.json" )
-		->popular
-		->items_last_three_months;
-
-foreach($files as $file) {
-	echo "<a href=$file->url><img src=$file->thumbnail></a>";
+if ( $files ) {
+	foreach($files->popular->items_last_week as $file) {
+		echo "<a href=$file->url><img src=$file->thumbnail></a>";
+	}
 }
