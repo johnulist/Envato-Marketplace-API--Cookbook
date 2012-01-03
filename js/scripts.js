@@ -1,8 +1,14 @@
+// Very scratch-padish. Need to refactor big time.
 (function() {
 	var dom, engine;
 
 	// enable syntax highlighting
 	prettyPrint();
+
+	dom = {
+		articles: $('article'),
+		languageHeadings: $('h4')
+	};
 
 	engine = {
 		init: function() {
@@ -12,37 +18,52 @@
 
 		// context = heading
 		accordion: function(context) {
-			$('article ul').hide();
+			dom.articles.children('ul').hide();
 
-			$('article header').click(function() {
+			dom.articles.find('header').click(function() {
 				var heading = $(this);
 				
 				// hide other panels
-				heading.parent('article').siblings().find('ul').slideUp(500);
+				heading
+					.parent('article')
+					.siblings()
+					.find('ul')
+						.slideUp(500);
 
 				// show example unordered list
-				heading.next('ul').find('li').children().not('h4').hide();
-				heading.next('ul').slideToggle(500);
+				heading
+					.next('ul')
+						.find('li')
+							.children(':not(h4)')
+								.hide()
+							.end()
+						.end()
+						.slideToggle(500);
 
-				$('article').find('h4').removeClass('actives noBorder');
+				dom.languageHeadings
+					.removeClass('noBorder');
 
 			});
 
-			$('h4').click(function() {
+			dom.languageHeadings.click(function() {
 				var heading = $(this);
 
-				heading.parent().siblings().find('h4').removeClass('actives').removeClass('noBorder');
+				heading
+					.parent()
+						.siblings()
+							.find('h4')
+								.removeClass('noBorder')
+								.end()
+							.children()
+								.not('h4')
+									.slideUp(400);
 
-				heading.toggleClass('actives');
 
-				heading.parent().siblings().children().not('h4').slideUp(400);
-
-
-				
-				heading.siblings().slideToggle(500).end().toggleClass('noBorder');
-			
-
-
+				heading
+					.siblings()
+						.slideToggle(500)
+						.end()
+					.toggleClass('noBorder');
 				
 			}).siblings().hide();
 		},
