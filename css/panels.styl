@@ -1,13 +1,9 @@
 div[role=main]
 	margin-top 2em
 
-article
-	margin-bottom 40px
-
-
 .nav li
-	margin-bottom 30px
 	display inline-block
+	cursor pointer
 
 h4
 	color chocolate
@@ -26,6 +22,17 @@ h4
 .noBorder
 	border-bottom none
 
+
+article
+	padding 40px 60px
+	margin-bottom 40px	
+	background bg
+	border 3px dashed darken(bg, 40%)
+	border-radius 10px
+	cursor pointer
+	
+
+
 article h2, article h4, article ul
 	margin-top 0
 
@@ -33,13 +40,9 @@ article h2, article h4
 	cursor pointer
 
 article header
-	background bg
-	border 3px dashed darken(bg, 40%)
-	padding 40px 100px
 	margin-bottom 0
-	border-radius 10px
-	cursor pointer
-
+	
+	
 	ul
 		list-style none
 		padding-left 0
@@ -60,15 +63,13 @@ article header
 		font-style italic
 
 article > ul
-	width 90%
-	border 3px dashed darken(bg, 40%)
-	border-top none
-	padding-right 40px
 	position relative
 	top -3px
 	background bg
 	margin auto
+	margin-top 2em
 	box-sizing border-box
+	padding-left 0
 
 	li
 		list-style none

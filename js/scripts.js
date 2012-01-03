@@ -6,10 +6,8 @@
 	prettyPrint();
 
 	dom = {
-		articles: $('article'),
 		languageHeadings: $('ul.nav h4'),
-		snippets: $('ul.snippets li'),
-		nav: $('.nav')
+		snippets: $('ul.snippets li')
 	};
 
 	engine = {
@@ -20,26 +18,9 @@
 
 		// context = heading
 		accordion: function(context) {
-			dom.articles.children('ul').not('.snippets').hide();
+
+			// Hide all content 
 			dom.snippets.hide();
-
-			dom.articles.find('header').click(function() {
-				var heading = $(this);
-				
-				dom.languageHeadings.removeClass('active');
-
-				dom.nav.slideToggle(500);
-				
-				dom.snippets.hide();
-				// hide other panels
-
-				heading
-					.parent('article')
-					.siblings()
-					.find('ul.snippets')
-						.slideToggle(500);
-
-			});
 
 			dom.languageHeadings.click(function() {
 				var heading = $(this),
@@ -47,11 +28,19 @@
 
 				dom.languageHeadings.removeClass('active');
 				heading.addClass('active');
-				
-				dom.snippets
-					.hide()
-					.filter('.' + rel)
-						.show();
+
+
+				dom.snippets.hide();
+
+				heading
+					.parents('.nav')
+						.next('.snippets')
+							.show()
+							.find('li')
+								.hide()
+								.filter('.'+rel)
+									.show();
+
 			});
 		},
 

@@ -12,29 +12,18 @@
 
 <script>
 
-var buildQuery = function(url) {
-    query = "http://query.yahooapis.com/v1/public/yql?q=";
-    query += encodeURIComponent(url);
-    query += "&format=json&callback=?"
+$.getJSON('http://173.255.193.46/api/edge/popular:themeforest.json?callback=?', function(files) {
+    var imgs;
 
-    return query;
-}
+    files = files.popular
+    console.log(files); // see what's available to play with
+                   
+    imgs  = $.map(files.items_last_week, function(file, i) {            
+         return '<a href="' + file.url + '"><img src=' + file.thumbnail + '></a>';
+     });
 
-$.getJSON(
-   buildQuery("select * from html where url='http://marketplace.envato.com/api/edge/popular:themeforest.json'"), 
-    function(files) { 
-        var imgs;
-        
-        files = JSON.parse( files.query.results.body.p ).popular;
-           
-        imgs  = $.map(files.items_last_week, function(file, i) {
-            console.log(files); // see what's available to play with
-             return '<a href="' + file.url + '"><img src=' + file.thumbnail + '></a>';
-         });
-
-        $(document.body).append(imgs.join(''));
-    }
-);
+    $(document.body).append(imgs.join(''));
+});
 </script>
 </body>
 </html>
