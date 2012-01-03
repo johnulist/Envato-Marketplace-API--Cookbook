@@ -33,22 +33,31 @@ article header
 	border-radius 10px
 	cursor pointer
 
+	ul
+		list-style none
+		padding-left 0
+		font-size .8em
+		color chocolate
+
+		li
+			line-height 1.8em
+			color black
+			text-shadow 0 1px 0 lighten(bg, 20%)
+
+			strong
+				font-family 'Noticia Text'
+
 	h2
 		font-family 'Noticia Text'
 		color headings
 		text-shadow 0 -1px 0 darken(headings, 10%)
 		margin-bottom 5px
 
-	code
-		text-shadow 0 1px 0 lighten(bg, 40%)
-		font-size .8em
-		color black
-
 	p
 		color darken(bg, 60%)
 		font-style italic
 
-article ul
+article > ul
 	width 90%
 	border 3px dashed darken(bg, 40%)
 	border-top none

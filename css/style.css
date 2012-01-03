@@ -443,22 +443,31 @@ article header {
   border-radius: 10px;
   cursor: pointer;
 }
+article header ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.8em;
+  color: #412812;
+}
+article header ul li {
+  line-height: 1.8em;
+  color: #000;
+  text-shadow: 0 1px 0 #cab9a6;
+}
+article header ul li strong {
+  font-family: 'Noticia Text';
+}
 article header h2 {
   font-family: 'Noticia Text';
   color: #244e59;
   text-shadow: 0 -1px 0 #204650;
   margin-bottom: 5px;
 }
-article header code {
-  text-shadow: 0 1px 0 #d7cbbc;
-  font-size: 0.8em;
-  color: #000;
-}
 article header p {
   color: #544432;
   font-style: italic;
 }
-article ul {
+article > ul {
   width: 90%;
   border: 3px dashed #7d664b;
   border-top: none;
@@ -471,11 +480,11 @@ article ul {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-article ul li {
+article > ul li {
   list-style: none;
   padding-top: 20px;
 }
-article ul li:nth-child(n+2) {
+article > ul li:nth-child(n+2) {
   padding-top: 0;
 }
 pre.prettyprint {
