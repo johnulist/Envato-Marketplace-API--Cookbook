@@ -398,9 +398,9 @@ div[class^="grid_"] {
   background: -ms-linear-gradient(#412812, #523217) no-repeat;
   background: linear-gradient(#412812, #523217) no-repeat;
   border-bottom: 1px solid #2d1c0d;
-  -webkit-box-shadow: 0 1px 0 #ecd3bc;
-  -moz-box-shadow: 0 1px 0 #ecd3bc;
-  box-shadow: 0 1px 0 #ecd3bc;
+  -webkit-box-shadow: 0 1px 0 #daa779;
+  -moz-box-shadow: 0 1px 0 #daa779;
+  box-shadow: 0 1px 0 #daa779;
   color: #fff;
   margin-bottom: 50px;
 }
@@ -456,13 +456,8 @@ article header ul li {
   color: #000;
   text-shadow: 0 1px 0 #cab9a6;
 }
-article header ul li strong {
-  font-family: 'Noticia Text';
-}
 article header h2 {
-  font-family: 'Noticia Text';
   color: #244e59;
-  text-shadow: 0 -1px 0 #204650;
   margin-bottom: 5px;
 }
 article header p {
