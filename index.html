@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title></title>
+
+	<!-- css -->
+	<link href='http://fonts.googleapis.com/css?family=Noticia+Text:400,700' rel='stylesheet'>
+	<link rel="stylesheet" href="css/style.css">
+	<!-- end css -->
+
+</head>
+<body>
+
+<div class="wrap">
+	<header class="inner">
+		<h1><span>Cookbook</span>For the Envato Marketplace API</h1>
+	</header>
+</div>
+
+<div role="main" class="inner">
+	<article>
+		<header>
+			<h2>Retrieve Popular Files</h2>
+			<code>http://marketplace.envato.com/api/edge/popular:MARKETPLACE_NAME.json</code>
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+		</header>
+
+		<ul>
+			<li>
+				<h4>PHP</h4>
+<pre class="prettyprint">
+function curl($url) 
+{
+  if ( empty($url) ) return false;
+
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+  $data = curl_exec($ch);
+  curl_close($ch);
+
+  return json_decode($data);
+}
+
+$files = curl( "http://marketplace.envato.com/api/edge/popular:themeforest.json" )
+		->popular
+		->items_last_three_months;
+
+foreach($files as $file) {
+	echo "&lt;a href=$file->url>&lt;img src=$file->thumbnail>&lt;/a>";
+}
+</pre>				
+				<p>Here is the method for PHP.</p>
+			</li>
+			<li>
+				<h4>jQuery</h4>
+<pre class="prettyprint">
+var buildQuery = function (url) {
+        query = "http://query.yahooapis.com/v1/public/yql?q=";
+        query += encodeURIComponent(url);
+        query += "&format=json&callback=?"
+
+        return query;
+    }
+
+$.getJSON(
+buildQuery("select * from html where url='http://marketplace.envato.com/api/edge/popular:themeforest.json'"), function (files) {
+    var imgs;
+
+    files = JSON.parse(files.query.results.body.p).popular;
+
+    imgs = $.map(files.items_last_week, function (file, i) {
+        console.log(files); // see what's available to play with
+        return '&lt;img src=' + file.thumbnail + '>';
+    });
+
+    $(document.body).append(imgs.join(''));
+});
+</pre>				
+				<p>Because we're performing cross-domain AJAX requests with JavaScript, we have to be a bit clever. <code>$.getJSON</code> won't work in our case. Instead, we can take advantage of the YQL API. </p>
+				
+			</li>
+		</ul>
+	</article>
+		
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!-- js -->
+<script src="highlighter/prettify.js"></script>
+<script src="js/scripts.js"></script>
+<!-- end js -->
+
+<script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

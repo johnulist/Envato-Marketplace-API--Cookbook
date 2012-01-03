@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset=utf-8>
+    <title></title>
+</head>
+<body>
+
+<h1>Popular Files</h1>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+
+var buildQuery = function(url) {
+    query = "http://query.yahooapis.com/v1/public/yql?q=";
+    query += encodeURIComponent(url);
+    query += "&format=json&callback=?"
+
+    return query;
+}
+
+$.getJSON(
+   buildQuery("select * from html where url='http://marketplace.envato.com/api/edge/popular:themeforest.json'"), 
+    function(files) { 
+        var imgs;
+        
+        files = JSON.parse( files.query.results.body.p ).popular;
+           
+        imgs  = $.map(files.items_last_week, function(file, i) {
+            console.log(files); // see what's available to play with
+             return '<a href="' + file.url + '"><img src=' + file.thumbnail + '></a>';
+         });
+
+        $(document.body).append(imgs.join(''));
+    }
+);
+</script>
+</body>
+</html>

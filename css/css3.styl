@@ -1,0 +1,42 @@
+all_vendors = webkit moz o ms
+
+vendor(property, args, prefixes = webkit moz)
+	for prefix in prefixes
+		{'-' + prefix + '-' + property}: args 
+	{property}: args
+	
+border-radius()
+	vendor('border-radius', arguments, ms o)
+
+box-shadow()
+	vendor('box-shadow', arguments)
+
+linear-gradient(steps, repeat = no-repeat)
+	background: s('-webkit-linear-gradient(' + join(', ', steps) + ')') repeat
+	background: s('-moz-linear-gradient(' + join(', ', steps) + ')') repeat	
+	background: s('-o-linear-gradient(' + join(', ', steps) + ')') repeat
+	background: s('-ms-linear-gradient(' + join(', ', steps) + ')') repeat
+	background: s('linear-gradient(' + join(', ', steps) + ')') repeat
+
+box-sizing()
+	vendor('box-sizing', arguments)
+
+transition()
+	vendor('transition', arguments, all_vendors)
+
+opacity()
+	ms-filter: "Alpha(Opacity=" + arguments * 100 + ")";
+	filter: 'Alpha(Opacity=' + arguments * 100 + ')';
+	opacity: arguments;
+
+animation()
+	vendor('animation', arguments, webkit moz ms)
+
+animation-name()
+	vendor('animation-name', arguments, webkit moz ms)	
+
+transform()
+	vendor('transform', arguments, all_vendors)
+
+column-count()
+	vendor('column-count'm arguments)
