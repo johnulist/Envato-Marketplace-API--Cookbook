@@ -1,0 +1,135 @@
+div[role=main]
+	margin-top 2em
+
+.nav li
+	display inline-block
+	cursor pointer
+
+
+	
+
+li:hover h4 a, .active h4 a
+	color inherit
+	background accent
+	background: -webkit-linear-gradient(lighten(accent, 80%), accent 40%);
+	color darkBlue
+
+h4 a:active
+	background: -webkit-linear-gradient(accent, lighten(accent, 20%) 40%) !important;
+
+.fetching
+	-webkit-animation pulse 1.5s alternate infinite
+
+@-webkit-keyframes pulse {
+	50% {
+		-webkit-transform scale(1.1)
+	}
+}
+
+h4 a
+	padding 7px 10px
+	display inline-block
+	font-size: .9em
+	border-radius 10px
+	font-weight normal
+
+.noBorder
+	border-bottom none
+
+
+article
+	padding 40px 60px 1px
+	margin-bottom 40px
+	background black
+	background url(../img/texture.gif) repeat
+	border-radius 3px	
+	-webkit-border-bottom-left-radius: 20px 500px;
+	-webkit-border-bottom-right-radius: 200px 30px;
+	-webkit-border-top-right-radius: 5px 100px;
+	
+	-moz-border-radius-bottomleft: 20px 500px;
+	-moz-border-radius-bottomright: 500px 30px;
+	-moz-border-radius-topright: 5px 100px;	
+	
+	border-radius-bottomleft: 20px 500px;
+	border-radius-bottomright: 500px 30px;
+	border-radius-topright: 5px 100px;
+
+
+article h2, article h4, article ul
+	margin-top 0
+	
+
+article header
+	margin-bottom 30px
+
+	ul
+		list-style none
+		padding-left 0
+		font-size .8em
+
+		li
+			line-height 1.8em
+			color white
+			text-shadow 0 1px 0 lighten(bg, 20%)
+
+			strong
+				color accent
+				text-shadow none
+
+	h2
+ 		margin-bottom 5px
+
+	p
+		color darken(bg, 60%)
+		font-style italic
+
+article > ul
+	list-style none
+	margin auto
+	margin-top 1em
+	padding-left 0
+	box-sizing border-box
+
+
+	li
+		margin-left 0
+
+
+article > ul.nav
+	position relative
+	top -3px
+	margin-bottom 2em
+
+	li
+		list-style none
+		display inline
+		padding-right 10px
+		margin-right 10px
+		border-right 1px solid darken(bg, 20%)
+
+
+		&:last-child
+			border-right none
+
+		&nth-child(n+2)
+			padding-top 0		
+
+.selectedCode
+	background white !important
+
+.snippets li
+	margin-bottom 30px
+
+.discuss
+	background white
+	padding 8px 20px
+	font-size .8em
+	margin-bottom 40px
+	text-align right
+
+	a
+		color darkBlue
+
+.demo
+	float left

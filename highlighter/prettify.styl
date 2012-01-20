@@ -38,18 +38,18 @@ pre.prettyprint, pre
 }
 
 .tag {
-	color: #008;
+	color: #fff;
 }
 
 .atn {
-	color: #606;
+	color: darken(yellow, 5%);
 }
 
 .atv {
-	color: #080;
+	color: accent;
 }
 
-.dec,.var {
+.var {
 	color: #606;
 }
 
@@ -68,6 +68,8 @@ pre.prettyprint, pre
 	color: headings
 }
 
+.dec { color: #fff; }
+
 }
 
 @media print,projection {
@@ -75,8 +77,8 @@ pre.prettyprint, pre
 	color: #060;
 }
 
-.kwd {
-	color: #006;
+.kwd,.dec {
+	color: #008;
 	font-weight: bold;
 }
 
@@ -99,7 +101,7 @@ pre.prettyprint, pre
 }
 
 .tag {
-	color: #006;
+	color: #008;
 	font-weight: bold;
 }
 

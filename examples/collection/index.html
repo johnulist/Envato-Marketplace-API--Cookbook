@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<title>All Items in a Collection</title>
+	<style>
+	li {
+		list-style: none;
+		float: left;
+	}
+	</style>
+</head>
+<body>
+
+<h1>Get All Items From a Collection</h1>
+
+<ul class="collection"></ul>
+
+<script id="template" type="site/template">
+	<li>
+		<a href="{{url}}" title="{{title}}">
+			<img src="{{thumbnail}}" alt="{{title}}">
+		</a>
+	</li>
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<script>
+(function() {
+	var template = $('#template').html(),
+		collectionContainer = $('ul.collection');
+
+	function supportsStorage() {
+		try {
+		    return 'localStorage' in window && window['localStorage'] !== null;
+		} catch (e) {
+			return false;
+		};
+	};
+
+	function bindToTemplate(collection) {
+
+		var fragment = $.map(collection, function(item, i) {
+	    	return template
+				.replace(/{{url}}/g, item.url)
+				.replace(/{{title}}/g, item.item)
+				.replace(/{{thumbnail}}/g, item.thumbnail);
+	    });
+	    return fragment;
+	}
+
+	if ( supportsStorage && localStorage.collection ) {
+		collectionContainer.append( JSON.parse(localStorage.collection).join('') );
+	} else {
+		$.getJSON('http://173.255.193.46/api/edge/collection:1107682.json?callback=?', function(collection) {
+			var frag = bindToTemplate(collection.collection);
+
+			collectionContainer.append(frag.join(''));
+
+			supportsStorage && (localStorage.collection = JSON.stringify(frag));			
+		});
+	}	
+})();
+
+</script>
+
+</body>
+</html>

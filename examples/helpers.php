@@ -61,6 +61,6 @@ function get_json($url, $expires = 3, $cache_dir = 'cache') {
 	} else { // use existing cached version
 		$files = json_decode( file_get_contents( $cached_file ) );
 	}
-
+	
 	return $files;
 }

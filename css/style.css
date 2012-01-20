@@ -209,27 +209,21 @@ table {
   border-spacing: 0;
 }
 h1 {
-  font-family: 'HominisNormal';
-  font-size: 5em;
+  font-family: sans-serif;
+  font-size: 1.3em;
   text-align: center;
   font-weight: normal;
   color: #fff;
-  text-shadow: 0 0 1px #000, 0 5px 0 #354659;
-  margin-bottom: 0;
-  margin-top: 34px;
+  margin: 0;
+  padding: 0.5em 0;
+  text-align: left;
 }
-.wrap h2 {
-  display: block;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 1em;
-  color: #000;
-  text-align: center;
-  font-weight: normal;
-  text-shadow: 0 1px 0 #fff;
-}
-h2 {
+h2,
+h3 {
   color: #ffc69c;
+}
+h3 {
+  font-weight: normal;
 }
 p {
   font-size: 1em;
@@ -289,15 +283,14 @@ pre {
     color: #b0cfe9;
   }
   .tag {
-    color: #008;
+    color: #fff;
   }
   .atn {
-    color: #606;
+    color: #f2f200;
   }
   .atv {
-    color: #080;
+    color: #ffc69c;
   }
-  .dec,
   .var {
     color: #606;
   }
@@ -313,13 +306,17 @@ pre {
   .gist-meta a {
     color: #244e59;
   }
+  .dec {
+    color: #fff;
+  }
 }
 @media print,projection {
   .str {
     color: #060;
   }
-  .kwd {
-    color: #006;
+  .kwd,
+  .dec {
+    color: #008;
     font-weight: bold;
   }
   .com {
@@ -339,7 +336,7 @@ pre {
     color: #440;
   }
   .tag {
-    color: #006;
+    color: #008;
     font-weight: bold;
   }
   .atn {
@@ -374,7 +371,16 @@ li.L9 {
   background: #eee;
 }
 body {
-  background: #9aa3ac;
+  background: #fff;
+}
+a {
+  color: #fff;
+}
+a:hover {
+  text-decoration: none;
+}
+p {
+  color: #fff;
 }
 .inner {
   width: 80%;
@@ -435,19 +441,16 @@ body {
   padding-bottom: 3em;
 }
 .wrap {
-  background: #b0cfe9;
-  background: -webkit-linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
-  background: -moz-linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
-  background: -o-linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
-  background: -ms-linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
-  background: linear-gradient(#b0cfe9, #b4d1ea) no-repeat;
-  border-bottom: 1px solid #2d6ba0;
-  border-top: 3px solid #2d6ba0;
-  -webkit-box-shadow: 0 1px 0 #c8ddf0;
-  -moz-box-shadow: 0 1px 0 #c8ddf0;
-  box-shadow: 0 1px 0 #c8ddf0;
+  background: #000;
+  background: url("../img/texture.gif") repeat;
+  border-bottom: 1px solid #000;
+  -webkit-box-shadow: 0 1px 0 #666;
+  -moz-box-shadow: 0 1px 0 #666;
+  -webkit-box-shadow: 0 1px 0 #666;
+  -moz-box-shadow: 0 1px 0 #666;
+  box-shadow: 0 1px 0 #666;
   color: #fff;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 div[role=main] {
   margin-top: 2em;
@@ -487,13 +490,22 @@ h4 a {
   border-bottom: none;
 }
 article {
-  padding: 40px 60px 0;
+  padding: 40px 60px 1px;
   margin-bottom: 40px;
-  background: #354659;
-  border: 2px dashed #b0cfe9;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
+  background: #000;
+  background: url("../img/texture.gif") repeat;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-border-bottom-left-radius: 20px 500px;
+  -webkit-border-bottom-right-radius: 200px 30px;
+  -webkit-border-top-right-radius: 5px 100px;
+  -moz-border-radius-bottomleft: 20px 500px;
+  -moz-border-radius-bottomright: 500px 30px;
+  -moz-border-radius-topright: 5px 100px;
+  border-radius-bottomleft: 20px 500px;
+  border-radius-bottomright: 500px 30px;
+  border-radius-topright: 5px 100px;
 }
 article h2,
 article h4,
@@ -501,7 +513,7 @@ article ul {
   margin-top: 0;
 }
 article header {
-  margin-bottom: 0;
+  margin-bottom: 30px;
 h2
 }
 article header ul {
@@ -525,7 +537,7 @@ margin-bottom 5px p {
 article > ul {
   list-style: none;
   margin: auto;
-  margin-top: 2em;
+  margin-top: 1em;
   padding-left: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -537,6 +549,7 @@ article > ul li {
 article > ul.nav {
   position: relative;
   top: -3px;
+  margin-bottom: 2em;
 }
 article > ul.nav li {
   list-style: none;
@@ -563,6 +576,9 @@ article > ul.nav linth-child(n+2) {
   font-size: 0.8em;
   margin-bottom: 40px;
   text-align: right;
+}
+.discuss a {
+  color: #354659;
 }
 .demo {
   float: left;
