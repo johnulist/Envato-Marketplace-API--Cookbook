@@ -221,8 +221,6 @@ h1 {
 h2,
 h3 {
   color: #ffc69c;
-}
-h3 {
   font-weight: normal;
 }
 p {
@@ -506,6 +504,13 @@ article {
   border-radius-bottomleft: 20px 500px;
   border-radius-bottomright: 500px 30px;
   border-radius-topright: 5px 100px;
+}
+article {
+  height: 120px;
+  overflow: hidden;
+}
+article:hover {
+  height: auto;
 }
 article h2,
 article h4,
